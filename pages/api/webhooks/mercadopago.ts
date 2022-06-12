@@ -10,7 +10,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (order.order_status == "paid") {
       const orderId = order.external_reference;
       const myOrder = new Order(orderId);
-      myOrder.pull;
+      await myOrder.pull();
+      console.log(myOrder);
       myOrder.data.status = "closed";
       await myOrder.push();
 

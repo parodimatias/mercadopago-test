@@ -18,8 +18,8 @@ export async function createOrderAndPreference({
   const preference = {
     external_reference: order.id,
     back_urls: {
-      success: process.env.VERCEL_URL + "success",
-      pending: process.env.VERCEL_URL + "pending",
+      success: process.env.VERCEL_URL + "/success",
+      pending: process.env.VERCEL_URL + "/pending",
     },
     notification_url: process.env.VERCEL_URL + "api/webhooks/mercadopago",
     items: [
@@ -36,5 +36,5 @@ export async function createOrderAndPreference({
   };
   const preferenceRes = await createPreference(preference);
   console.log(preferenceRes);
-  return preferenceRes.body["back_urls"];
+  return preferenceRes.body["init_point"];
 }

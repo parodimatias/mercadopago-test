@@ -16,13 +16,12 @@ async function postHandler(
     const product = new Product(productId);
     await product.pull();
     if (!product.data) res.status(404).send("Product does not exist");
-    const redirectUrls = await createOrderAndPreference({
+    const payUrl = await createOrderAndPreference({
       userId: token.userId,
       productId,
       quantity: req.body.data.quantity,
     });
-    console.log("redirect", redirectUrls);
-    res.send(redirectUrls);
+    res.send(payUrl);
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
