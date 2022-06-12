@@ -3,5 +3,5 @@
 node_modules
 .env.local
 .ignore
-cuentas.md
+cuentas.json
 test.json

@@ -1,7 +1,7 @@
 import addMinutes from "date-fns/addMinutes";
 import { Auth } from "lib/models/auth";
 import { User } from "lib/models/users";
-import { msg, sendMail } from "lib/sendgrid";
+import { msg, sendEmail } from "lib/sendgrid";
 import gen from "random-seed";
 
 var random = gen.create();
@@ -34,7 +34,7 @@ export async function sendCode(email: string) {
     subject: "Access code",
     text: `Your code is ${auth.data.code}`,
   };
-  sendMail(msg);
+  sendEmail(msg);
   return true;
 }
 

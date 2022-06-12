@@ -7,7 +7,7 @@ export interface msg {
   text: string;
   html?: string;
 }
-export function sendMail(msg: msg) {
+export function sendEmail(msg: msg) {
   sgMail
     .send(msg)
     .then((response) => {
