@@ -29,12 +29,13 @@ export async function createOrderAndPreference({
         description: product.data.description,
         picture_url: product.data.picture_url,
         quantity: order.data.quantity,
-        currenncy_id: "ARS",
+        currency_id: "ARS",
         category_id: "cat123",
       },
     ],
   };
   const preferenceRes = await createPreference(preference);
   console.log(preferenceRes);
+  console.log(process.env.VERCEL_URL + "/api/webhooks/mercadopago");
   return preferenceRes.body["init_point"];
 }
