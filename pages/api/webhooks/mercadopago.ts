@@ -4,6 +4,7 @@ import { User } from "lib/models/users";
 import { sendEmail } from "lib/sendgrid";
 import { NextApiRequest, NextApiResponse } from "next";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+  console.log("llego notification", req.body);
   const { id, topic } = req.query;
   if (topic == "merchant_order") {
     const order = await getMerchandOrder(id);
