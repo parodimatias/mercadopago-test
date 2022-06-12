@@ -7,14 +7,14 @@ export interface msg {
   text: string;
   html?: string;
 }
-export function sendEmail(msg: msg) {
-  sgMail
-    .send(msg)
-    .then((response) => {
-      console.log(response[0].statusCode);
-      console.log(response[0].headers);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+export async function sendEmail(msg: msg) {
+  try {
+    const response = await sgMail.send(msg);
+    console.log(response[0].statusCode);
+    console.log(response[0].headers);
+    return `Mail has been sent, ${response[0].statusCode}`;
+  } catch (error) {
+    console.error(error);
+    return `${error}`;
+  }
 }

@@ -34,8 +34,8 @@ export async function sendCode(email: string) {
     subject: "Access code",
     text: `Your code is ${auth.data.code}`,
   };
-  sendEmail(msg);
-  return true;
+  const mailResponse = await sendEmail(msg);
+  return mailResponse;
 }
 
 export async function checkEmailandCode(email: string, code: number) {
