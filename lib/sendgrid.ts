@@ -10,8 +10,13 @@ export interface msg {
 export async function sendEmail(msg: msg) {
   try {
     const response = await sgMail.send(msg);
-    console.log(response[0].statusCode);
-    console.log(response[0].headers);
+    console.log(
+      "Mail has been sent",
+      msg,
+      response[0].statusCode,
+      response[0].headers
+    );
+
     return `Mail has been sent, ${response[0].statusCode}`;
   } catch (error) {
     console.error(error);
