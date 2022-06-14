@@ -21,7 +21,9 @@ export async function createOrderAndPreference({
       success: process.env.VERCEL_URL + "/success",
       pending: process.env.VERCEL_URL + "/pending",
     },
-    notification_url: process.env.VERCEL_URL + "/api/webhooks/mercadopago",
+    notification_url:
+      "https://webhook.site/69066534-8361-47ca-b82f-1f308b6d3932",
+    // notification_url: process.env.VERCEL_URL + "/api/webhooks/mercadopago",
     items: [
       {
         title: product.data.title,
